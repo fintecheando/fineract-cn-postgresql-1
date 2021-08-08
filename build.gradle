@@ -48,7 +48,7 @@ ext.versions = [
         bonecp       : '0.8.0.RELEASE',
         flyway       : '6.3.3',
         postgresql   : '42.2.5',
-        eclipselink  : '2.7.4',
+        eclipselink  : '2.7.9',
 ]
 
 apply plugin: "org.jamgo.eclipselink-plugin"
@@ -61,7 +61,7 @@ tasks.withType(JavaCompile) {
 repositories {
     jcenter()
     mavenLocal()
-    maven { url 'https://mifos.jfrog.io/mifos/libs-snapshot/' }
+    maven { url System.getenv("ARTIFACTORY_URL") }
 }
 
 dependencies {
@@ -100,10 +100,10 @@ publishing {
 }
 
 artifactory {
-    contextUrl = System.getenv("ARTIFACTORY_URL")
+    contextUrl = System.getenv("ARTIFACTORY_URL_PUBLISH")
     publish {
         repository {
-            repoKey = project.findProperty('artifactoryRepoKey')
+            repoKey = System.getenv("ARTIFACTORY_REPOKEY")
             username = System.getenv("ARTIFACTORY_USER")
             password = System.getenv("ARTIFACTORY_PASSWORD")
         }
