@@ -38,7 +38,7 @@ public class JdbcUrlBuilderTest {
 
     final String postgresqlJdbcUrl = JdbcUrlBuilder
         .create(JdbcUrlBuilder.DatabaseType.POSTGRESQL)
-        .host("localhost")
+        .host("postgres")
         .port("5432")
         .instanceName("comp_test")
         .build();
@@ -52,7 +52,7 @@ public class JdbcUrlBuilderTest {
 
     final String postgresqlJdbcUrl = JdbcUrlBuilder
             .create(JdbcUrlBuilder.DatabaseType.POSTGRESQL)
-            .host("localhost")
+            .host("postgres")
             .port("5432").build();
 
     Assert.assertEquals(expectedJdbcUrl, postgresqlJdbcUrl);
@@ -64,7 +64,7 @@ public class JdbcUrlBuilderTest {
 
     final String mariaDbJdbcUrl = JdbcUrlBuilder
             .create(JdbcUrlBuilder.DatabaseType.POSTGRESQL)
-            .host("localhost, anotherhost")
+            .host("postgres, anotherhost")
             .port("5432")
             .instanceName("comp_test")
             .build();
