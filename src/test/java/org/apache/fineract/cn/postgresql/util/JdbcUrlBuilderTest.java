@@ -34,11 +34,11 @@ public class JdbcUrlBuilderTest {
 
   @Test
   public void shouldCreatePostgresqlUrl() {
-    final String expectedJdbcUrl = "jdbc:postgresql://localhost:5432/comp_test";
+    final String expectedJdbcUrl = "jdbc:postgresql://postgres:5432/comp_test";
 
     final String postgresqlJdbcUrl = JdbcUrlBuilder
         .create(JdbcUrlBuilder.DatabaseType.POSTGRESQL)
-        .host("localhost")
+        .host("postgres")
         .port("5432")
         .instanceName("comp_test")
         .build();
@@ -48,11 +48,11 @@ public class JdbcUrlBuilderTest {
 
   @Test
   public void shouldCreatePostgresqlUrlNoInstance() {
-    final String expectedJdbcUrl = "jdbc:postgresql://localhost:5432";
+    final String expectedJdbcUrl = "jdbc:postgresql://postgres:5432";
 
     final String postgresqlJdbcUrl = JdbcUrlBuilder
             .create(JdbcUrlBuilder.DatabaseType.POSTGRESQL)
-            .host("localhost")
+            .host("postgres")
             .port("5432").build();
 
     Assert.assertEquals(expectedJdbcUrl, postgresqlJdbcUrl);
@@ -60,11 +60,11 @@ public class JdbcUrlBuilderTest {
 
   @Test
   public void shouldCreatePostgresqlReplicationUrl() {
-    final String expectedJdbcUrl = "jdbc:postgresql:replication://localhost:5432,anotherhost:5432/comp_test";
+    final String expectedJdbcUrl = "jdbc:postgresql:replication://postgres:5432,anotherhost:5432/comp_test";
 
     final String mariaDbJdbcUrl = JdbcUrlBuilder
             .create(JdbcUrlBuilder.DatabaseType.POSTGRESQL)
-            .host("localhost, anotherhost")
+            .host("postgres, anotherhost")
             .port("5432")
             .instanceName("comp_test")
             .build();
